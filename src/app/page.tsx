@@ -1,9 +1,22 @@
-import React from 'react'
+import Categories from "./components/category/Categories";
+import CompanyLogos from "./components/company/Company";
+import FeaturedProducts from "./components/feature/Product";
+import Header from "./components/hero-section";
+import HotProduct from "./components/hotproducts/HotProduct";
+import OurProduct from "./components/ourproducts/OurProduct";
 
-export default function page() {
+
+
+export default function Home() {
   return (
-    <div>
-      hello world
-    </div>
+    <main className="flex min-h-screen flex-col lg:px-28">
+      <Header />
+      <CompanyLogos/>
+      <FeaturedProducts/>
+      <Categories/>
+      <HotProduct/>
+      <OurProduct/>
+    </main>
   )
 }
+
