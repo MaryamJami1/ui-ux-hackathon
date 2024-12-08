@@ -48,7 +48,7 @@ export default function Navbar() {
               Faqs
             </Link>
             <Link
-              href="/help"
+              href="/components/contact_us/contact"
               className="flex items-center gap-1 hover:text-gray-200"
             >
               <HelpCircle className="w-4 h-4" />
@@ -99,18 +99,18 @@ export default function Navbar() {
               }`}
           >
             <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-              {["Home", "Shop", "Product", "Contact Us", "About"].map((item) => (
+              {["Home", "Shop",  "About", "Contact Us"].map((item) => (
                 <li key={item}>
                   <Link
                     href={
-                      item === "Product"
-                        ? "/components/AllProducts/product"
-                        : item === "Contact Us"
+                      item === "Contact Us"
                           ? "/components/contact_us/contact"
                            : item === "Home"
                           ? "/"
                            : item === "About"
                           ? "/components/about/about"
+                           : item === "Shop"
+                          ? "/components/Shop/shop"
                           : `/${item.toLowerCase()}`
                     }
                     className="text-gray-600 hover:text-gray-900"
