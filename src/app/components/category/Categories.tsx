@@ -32,7 +32,7 @@ export default function Categories() {
                     {categories.map((category) => (
                         <Link
                             key={category.name}
-                            href={category.href}
+                            href={"../components/productDectription/discription"}
                             className="group relative overflow-hidden rounded-lg"
                         >
                             <div className="aspect-[4/3] w-full">

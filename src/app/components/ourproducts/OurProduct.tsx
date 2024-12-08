@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'lucide-react'
 import { Badge } from "@/app/components/ui/Badge"
-
+import Image from 'next/image'
+import Link from 'next/link'
 interface Product {
   id: number
   title: string
@@ -88,11 +89,17 @@ export default function OurProduct() {
                   Sales
                 </Badge>
               )}
-              <img
+              <Link href={'components/productDectription/discription'} 
+             
+        >
+              <Image
                 src={product.image}
                 alt={product.title}
+                height={400}
+                width={400}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              </Link>
             </div>
             <div className="mt-4 flex items-center justify-between">
               <div>

@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'lucide-react'
 import { Badge } from "@/app/components/ui/Badge"
 import NewsletterInstagram from '../Instagram'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -116,9 +117,12 @@ export default function AllProducts() {
                   Sales
                 </Badge>
               )}
-              <img
+             
+              <Image
                 src={product.image}
                 alt={product.title}
+                height={400}
+                width={400}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>

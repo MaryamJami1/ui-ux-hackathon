@@ -4,6 +4,7 @@ import FeaturedProducts from "./components/feature/Product";
 import Header from "./components/hero-section";
 import HotProduct from "./components/hotproducts/HotProduct";
 import OurProduct from "./components/ourproducts/OurProduct";
+import ProductDescription from "./components/productDectription/discription/page";
 
 
 
