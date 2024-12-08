@@ -110,7 +110,7 @@ export default function Navbar() {
                            : item === "Home"
                           ? "/"
                            : item === "About"
-                          ? ""
+                          ? "/components/about/about"
                           : `/${item.toLowerCase()}`
                     }
                     className="text-gray-600 hover:text-gray-900"
