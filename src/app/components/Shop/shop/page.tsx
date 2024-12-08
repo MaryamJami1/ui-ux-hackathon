@@ -15,7 +15,7 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="container mx-auto px-12 lg:px- py-20">
+    <div className="container mx-auto px-12 lg:px-[6rem] py-20">
       {/* Header */}
       <header className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800">Shop Our Collection</h1>
