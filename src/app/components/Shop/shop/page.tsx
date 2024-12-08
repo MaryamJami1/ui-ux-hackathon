@@ -15,7 +15,7 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-20 ">
+    <div className="container mx-auto px-4 py-20">
       {/* Header */}
       <header className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800">Shop Our Collection</h1>
@@ -71,7 +71,7 @@ export default function ShopPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="bg-white mt-12 p-8 text-center rounded-lg shadow-md pt-20">
+      <section className="bg-white mt-12 p-8 text-center rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h2>
         <p className="text-gray-600 mb-6">Get the latest updates on new arrivals and offers.</p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
