@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ShoppingCartHeader() {
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-10 m-10 lg:px-28 lg:py-1 font-inter ">
+        <div className="w-full max-w-7xl mx-auto px-2  m-10 lg:px-28 lg:py-1 font-inter ">
             <h1 className="text-2xl font-medium mb-6">Bag</h1>
 
             <div className="grid md:grid-cols-3 gap-8">
