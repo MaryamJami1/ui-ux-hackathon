@@ -8,12 +8,13 @@ export default function ShoppingCartHeader() {
 
             <div className="grid md:grid-cols-3 gap-8">
                 {/* Cart Items Section */}
+
                 <div className="md:col-span-2 space-y-8">
                     {[
                         { id: 1, src: "/hot/item-category 1.png" },
-                        { id: 2, src: "/category/Image (10).png" }  
+                        { id: 2, src: "/category/Image (10).png" },
                     ].map((item) => (
-                        <div className="flex gap-6 p-4 bg-white shadow rounded-lg border border-gray-200">
+                        <div key={item.id} className="flex gap-6 p-4 bg-white shadow rounded-lg border border-gray-200">
                             <div className="w-[150px] h-[150px] bg-gray-100 relative">
                                 <Image
                                     src={item.src}
@@ -55,7 +56,7 @@ export default function ShoppingCartHeader() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div>;
 
                 {/* Summary Section */}
                 <div className="bg-white shadow rounded-lg border border-gray-200 p-6">

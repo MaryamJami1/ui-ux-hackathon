@@ -84,9 +84,11 @@ export default function AboutPage() {
         {/* Left Side: Sofa */}
         <div className="max-w-sm lg:ml-[6.5rem] bg-transparent rounded-lg overflow-hidden">
             <div className="relative">
-                <img
+                <Image
                     src="/product/nathan-fertig-FBXuXp57eM0-unsplash.jpg"
                     alt="The Poplar suede sofa"
+                    height={400}
+                    width={400}
                     className="w-full h-64 object-cover"
                 />
             </div>
@@ -103,9 +105,11 @@ export default function AboutPage() {
                 <div className="max-w-xs bg-transparent rounded-lg overflow-hidden">
                     {/* Image Section */}
                     <div className="h-64">
-                        <img
+                        <Image
                             src="/product/Parent (1).png"
                             alt="The Dandy Chair"
+                            height={400}
+                            width={400}
                             className="w-full h-full object-contain"
                         />
                     </div>
@@ -123,9 +127,11 @@ export default function AboutPage() {
                 <div className="max-w-xs  bg-transparent rounded-lg overflow-hidden">
                     {/* Image Section */}
                     <div className="h-64">
-                        <img
+                        <Image
                             src="/product/Parent (2).png"
                             alt="The Dandy Chair"
+                            height={400}
+                            width={400}
                             className="w-full h-full object-contain"
                         />
                     </div>
