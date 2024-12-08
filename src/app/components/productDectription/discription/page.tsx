@@ -3,7 +3,7 @@ import FeaturedProducts from "../featureProduct"
 
 export default function ProductDescription() {
     return (
-        <div className="container mx-auto px-4 py-8 lg:py-20 ">
+        <div className="container mx-auto px-4 py-11 lg:px-8 ">
             <div className="grid md:grid-cols-2 gap-8 items-start">
                 <div className="relative aspect-square">
                     <Image
@@ -14,7 +14,7 @@ export default function ProductDescription() {
                         className="rounded-lg"
                     />
                 </div>
-                <div className="flex flex-col space-y-6 lg:py-20 lg:px-10 p-5 rounded-lg ">
+                <div className="flex flex-col space-y-6 lg:py-10 lg:px-10 p-5 rounded-lg ">
                     <h1 className="text-4xl font-bold text-gray-800">Ergonomic Office Chair</h1>
                     <div className="flex items-center justify-between mb-4">
                         <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
