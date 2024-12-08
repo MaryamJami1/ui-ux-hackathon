@@ -7,7 +7,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full font-inter">
+    <header className="w-full font-inter ">
       {/* Top Banner */}
       <div className="w-full bg-[#2B2A4C] text-white px-4 py-2.5">
         <div className="container mx-auto flex justify-between items-center text-sm">
