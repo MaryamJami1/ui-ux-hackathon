@@ -4,7 +4,11 @@ import "./globals.css";
 import NavBar from "./components/nav-bar";
 import Footer from "./components/footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: "Ui Ux Hackathon",

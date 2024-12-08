@@ -73,7 +73,7 @@ export default function Navbar() {
           </Link>
           <div className="flex items-center gap-6">
             <Link
-              href="/cart"
+              href="/components/cart/myCarts"
               className="flex items-center gap-2 hover:text-gray-600"
             >
               <ShoppingCart className="w-6 h-6" />
@@ -99,13 +99,19 @@ export default function Navbar() {
               }`}
           >
             <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-              {["Home", "Shop", "Product", "Pages", "About"].map((item) => (
+              {["Home", "Shop", "Product", "Contact Us", "About"].map((item) => (
                 <li key={item}>
                   <Link
                     href={
                       item === "Product"
-                        ? "/components/AllProducts/product" 
-                        : `/${item.toLowerCase()}`
+                        ? "/components/AllProducts/product"
+                        : item === "Contact Us"
+                          ? "/components/contact_us/contact"
+                           : item === "Home"
+                          ? "/"
+                           : item === "About"
+                          ? ""
+                          : `/${item.toLowerCase()}`
                     }
                     className="text-gray-600 hover:text-gray-900"
                   >
@@ -114,6 +120,7 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
+
 
             <div className="flex items-center gap-2 text-gray-600 mt-4 md:mt-0">
               <span>Contact:</span>
