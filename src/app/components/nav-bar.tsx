@@ -44,7 +44,7 @@ export default function Navbar() {
                 />
               </svg>
             </div>
-            <Link href="/faqs" className="hover:text-gray-200">
+            <Link href="/components/Faqs/faqs" className="hover:text-gray-200">
               Faqs
             </Link>
             <Link
