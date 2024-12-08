@@ -7,7 +7,7 @@ export default function ShoppingCartHeader() {
             <h1 className="text-2xl font-medium mb-6">Bag</h1>
 
             <div className="grid md:grid-cols-3 gap-8">
-                {/* Cart Items Section */}
+
 
                 <div className="md:col-span-2 space-y-8">
                     {[
