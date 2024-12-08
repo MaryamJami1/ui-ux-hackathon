@@ -4,9 +4,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   size?: "small" | "medium" | "large" | "icon";
   className?: string;
+  variant?: string; // Added the 'variant' property
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, size = "medium", className, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({ 
+  children, 
+  size = "medium", 
+  className, 
+  variant,
+  ...props 
+}) => {
   const sizeClasses = {
     small: "px-2 py-1 text-sm",
     medium: "px-4 py-2 text-base",

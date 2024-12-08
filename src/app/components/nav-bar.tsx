@@ -95,15 +95,18 @@ export default function Navbar() {
       <nav className="border-b bg-white">
         <div className="container mx-auto px-4">
           <div
-            className={`flex-col md:flex md:flex-row justify-between items-center md:h-14 transition-all ${
-              menuOpen ? "flex" : "hidden md:flex"
-            }`}
+            className={`flex-col md:flex md:flex-row justify-between items-center md:h-14 transition-all ${menuOpen ? "flex" : "hidden md:flex"
+              }`}
           >
             <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
               {["Home", "Shop", "Product", "Pages", "About"].map((item) => (
                 <li key={item}>
                   <Link
-                    href={`/${item.toLowerCase()}`}
+                    href={
+                      item === "Product"
+                        ? "/components/AllProducts/product" 
+                        : `/${item.toLowerCase()}`
+                    }
                     className="text-gray-600 hover:text-gray-900"
                   >
                     {item}
@@ -111,6 +114,7 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
+
             <div className="flex items-center gap-2 text-gray-600 mt-4 md:mt-0">
               <span>Contact:</span>
               <Link
