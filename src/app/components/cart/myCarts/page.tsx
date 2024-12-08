@@ -56,7 +56,7 @@ export default function ShoppingCartHeader() {
                             </div>
                         </div>
                     ))}
-                </div>;
+                </div>
 
                 {/* Summary Section */}
                 <div className="bg-white shadow rounded-lg border border-gray-200 p-6">
