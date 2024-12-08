@@ -33,20 +33,20 @@ const products: Product[] = [
     },
     {
         id: 4,
-        title: "Library Stool Chair",
+        title: "White Sofa",
         price: 20,
         image: "/product/Image (11).png"
     },
     {
         id: 5,
-        title: "Library Stool Chair",
+        title: "Office Chair",
         price: 20,
         image: "/category/Image (10).png",
         isNew: true
     },
     {
         id: 6,
-        title: "Library Stool Chair",
+        title: "Wooden Chair",
         price: 20,
         originalPrice: 30,
         image: "/hot/card (2).png",
@@ -60,13 +60,13 @@ const products: Product[] = [
     },
     {
         id: 8,
-        title: "Library Stool Chair",
+        title: "Wooden Chair",
         price: 20,
         image: "/hot/card (1).png"
     },
     {
         id: 1,
-        title: "Library Stool Chair",
+        title: "Office Chair",
         price: 20,
         image: "/product/Image (5).png",
         isNew: true
@@ -81,13 +81,13 @@ const products: Product[] = [
     },
     {
         id: 3,
-        title: "Library Stool Chair",
+        title: "Stool Chair",
         price: 20,
         image: "/product/Image (10).png"
     },
     {
         id: 4,
-        title: "Library Stool Chair",
+        title: "Office Chair",
         price: 20,
         image: "/product/Image (11).png"
     },
