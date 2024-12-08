@@ -59,7 +59,7 @@ export default function Navbar() {
       </div>
 
       {/* Main Header */}
-      <div className="border-b">
+      <div className="border-b lg:px-[6rem]">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
             <svg
@@ -92,7 +92,7 @@ export default function Navbar() {
       </div>
 
       {/* Navigation */}
-      <nav className="border-b bg-white">
+      <nav className="border-b bg-white lg:px-[6rem]">
         <div className="container mx-auto px-4">
           <div
             className={`flex-col md:flex md:flex-row justify-between items-center md:h-14 transition-all ${menuOpen ? "flex" : "hidden md:flex"
