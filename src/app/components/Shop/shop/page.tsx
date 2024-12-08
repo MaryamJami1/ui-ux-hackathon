@@ -59,7 +59,7 @@ export default function ShopPage() {
                 src={product.image}
                 alt={product.title}
                 layout="fill"
-                objectFit="cover"
+                objectFit="top"
               />
             </div>
             <div className="p-4 text-center">
