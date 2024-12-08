@@ -1,5 +1,4 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
 
 export default function Categories() {
     const categories = [
@@ -21,18 +20,16 @@ export default function Categories() {
             image: "/category/Image (11).png",
             href: "/categories/desk-chair"
         }
-    ]
+    ];
 
     return (
         <section className="w-full px-4 py-[7rem] md:px-6">
             <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold tracking-tight  mb-8">Top Categories
-                </h2>
+                <h2 className="text-3xl font-bold tracking-tight mb-8">Top Categories</h2>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {categories.map((category) => (
-                        <Link
+                        <div
                             key={category.name}
-                            href={"../components/productDectription/discription"}
                             className="group relative overflow-hidden rounded-lg"
                         >
                             <div className="aspect-[4/3] w-full">
@@ -55,11 +52,10 @@ export default function Categories() {
                                     </p>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>
         </section>
-    )
+    );
 }
-
