@@ -33,7 +33,7 @@ export default function Page({ params }: { params: { discription: string } }) {
                             className="rounded-lg"
                         />
                     </div>
-                    <div className="flex flex-col space-y-6 lg:py-10 lg:px-10 p-5 rounded-lg ">
+                    <div className="flex flex-col space-y-6 lg:py-4 lg:px-10 p-5 rounded-lg ">
                         <h1 className="text-4xl font-bold text-gray-800">{product.title}</h1>
                         <div className="flex items-center justify-between mb-4">
                             <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
@@ -42,7 +42,7 @@ export default function Page({ params }: { params: { discription: string } }) {
 
                         </div>
                         <p className="text-gray-700 mb-6 leading-relaxed">{product.description}</p>
-                        <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-1 px-2 rounded transition duration-300">
+                        <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-2 px-2 rounded transition w-[8rem] duration-300">
                             Add to Cart
                         </button>
                     </div>
