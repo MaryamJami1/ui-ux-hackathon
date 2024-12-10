@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={item}>
                   <Link 
                     href="#" 
-                    className={`text-sm ${item === 'Desk Chair' ? 'text-[#00B4B4]' : 'text-muted-foreground hover:text-[#00B4B4]'}`}
+                    className={`text-sm ${item === 'Desk Chair' ? 'text-[#000000]' : ' hover:text-[#00B4B4]'}`}
                   >
                     {item}
                   </Link>
