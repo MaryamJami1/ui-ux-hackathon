@@ -29,8 +29,8 @@ export default function Page({ params }: { params: { discription: string } }) {
                     <Image
                         src={product.image}
                         alt={product.title}
-                        width={600}
-                        height={600}
+                        width={200}
+                        height={200}
                         className="w-full h-auto object-cover rounded-lg"
                     />
                 </div>

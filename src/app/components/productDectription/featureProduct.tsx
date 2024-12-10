@@ -7,7 +7,7 @@ export default function FeaturedProducts() {
   const products = [
     {
       id: 1,
-      name: "Library Stool Chair",
+      name: "Stool Chair",
       price: 99,
       image: "/category/Image (11).png"
     },
@@ -19,7 +19,7 @@ export default function FeaturedProducts() {
     },
     {
       id: 3,
-      name: "HomeChair",
+      name: "Home Chair",
       price: 99,
       image: "/product/Image (12).png"
     },
@@ -65,7 +65,7 @@ export default function FeaturedProducts() {
                     className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="space-y-1 text-sm mt-3 mb-5 flex justify-between px-2">
+                <div className="space-y-1 text-sm mt-3 mb-5 flex justify-between px-6">
                   <h3 className="font-medium text-gray-900 text-base">
                     {product.name}
                   </h3>
