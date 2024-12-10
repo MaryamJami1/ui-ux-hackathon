@@ -37,48 +37,49 @@ export default function FeaturedProducts() {
   ]
 
   return (
-    <section className="px-2 pt-12 md:px-6 ">
-      <div className="w-full max-w-[100rem] mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold tracking-wider">
-            FEATURED PRODUCTS
-          </h2>
-          <Link 
-            href="/products" 
-            className="text-md border-b border-black pb-0.5 hover:opacity-70 transition-opacity"
-          >
-            View all
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6 overflow-x-auto lg:pt-4 hide-scrollbar">
-          {products.map((product) => (
-            <div key={product.id} className="min-w-[170px] space-y-4 lg:px-1">
-              <div className="aspect-square relative bg-gray-100 overflow-hidden">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium">{product.name}</h3>
-                <p className="text-sm font-semibold">${product.price}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+    <section className="px-2 pt-12 md:px-6">
+    <div className="w-full max-w-[100rem] mx-auto">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-2xl font-bold tracking-wider">
+          FEATURED PRODUCTS
+        </h2>
+        <Link 
+          href="/products" 
+          className="text-md border-b border-black pb-0.5 hover:opacity-70 transition-opacity"
+        >
+          View all
+        </Link>
       </div>
-      <style jsx global>{`
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-    </section>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6 overflow-x-auto lg:pt-4 hide-scrollbar">
+        {products.map((product) => (
+          <div key={product.id} className="flex flex-col space-y-4 lg:px-2">
+            <div className="relative w-[150px] h-[150px] bg-gray-100 overflow-hidden">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium truncate">{product.name}</h3>
+              <p className="text-sm font-semibold">${product.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <style jsx global>{`
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    `}</style>
+  </section>
+  
   )
 }
 
