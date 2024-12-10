@@ -3,6 +3,7 @@ import Image from "next/image"
 import FeaturedProducts from "../featureProduct"
 import { useEffect, useState } from "react"
 import productList from "./products"
+import { Button } from "../../ui/Button"
 
 interface Product {
     id: number
@@ -21,48 +22,37 @@ export default function Page({ params }: { params: { discription: string } }) {
         setproduct(productList.filter(val => val.id === Number(params.discription))[0])
     }, [])
     if (product) {
-        return (
-            <div className="container mx-auto px-4 py-11 lg:px-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    {/* Image Section */}
-                    <div className="relative aspect-square w-full overflow-hidden">
-                        <Image
-                            src={product.image}
-                            alt="Product Image"
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-lg"
-                        />
+        return ( <>
+            <div className="flex flex-col md:flex-row gap-8 p-4 max-w-6xl mx-auto lg:px-[5rem] lg:py-[4rem]">
+                {/* Product Image */}
+                <div className="w-full md:w-1/2">
+                    <Image
+                        src={product.image}
+                        alt={product.title}
+                        width={600}
+                        height={600}
+                        className="w-full h-auto object-cover rounded-lg"
+                    />
+                </div>
+
+                {/* Product Details */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center">
+                    <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
+
+                    <div className="flex items-center gap-4 mb-6">
+                        <Button variant="outline">{`${product.price}$`}</Button>
                     </div>
 
-                    {/* Product Details Section */}
-                    <div className="flex flex-col space-y-6 p-5 lg:py-[4rem] rounded-lg md:p-8 ">
-                        {/* Product Title */}
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{product.title}</h1>
+                    <p className="text-gray-600 mb-6">{product.description}</p>
 
-                        {/* Price Button */}
-                        <div className="flex items-center justify-between mb-4">
-                            <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
-                                ${product.price}
-                            </button>
-                        </div>
-
-                        {/* Product Description */}
-                        <p className="text-gray-700 mb-6 leading-relaxed text-sm md:text-base">
-                            {product.description}
-                        </p>
-
-                        {/* Add to Cart Button */}
-                        <button className="bg-[#029FAE] hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded transition w-[6rem] sm:w-[7rem] md:w-[8rem] duration-300">
-                            Add to Cart
-                        </button>
-
-                    </div>
+                    <Button className="w-full md:w-[10rem] ">Add to Cart</Button>
                 </div>
 
 
-                <FeaturedProducts />
+              
             </div>
+              <FeaturedProducts/>
+             </>
         )
     }
 }

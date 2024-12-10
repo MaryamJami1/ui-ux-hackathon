@@ -14,7 +14,7 @@ const productList: Product[] = [
         title: "Library Stool Chair",
         price: 20,
         image: "/product/Image (5).png",
-        description: "A versatile and stylish library stool chair designed for convenience and comfort. Its compact design makes it perfect for any space."
+        description: "A versatile and stylish library stool chair designed for convenience and comfort. Its compact design makes it perfect for any space.A versatile and stylish library stool chair designed for convenience and comfort. Its compact design makes it perfect for any space.A versatile and stylish library stool chair designed for convenience and comfort. Its compact design makes it perfect for any space."
     },
     {
         id: 2,
@@ -28,7 +28,7 @@ const productList: Product[] = [
         title: "Orange Chair",
         price: 20,
         image: "/product/Image (10).png",
-        description: "An ergonomic library stool chair crafted to enhance your reading sessions. Lightweight yet sturdy for easy portability."
+        description: "An ergonomic library stool chair crafted to enhance your reading sessions. Lightweight yet sturdy for easy portability.An ergonomic library stool chair crafted to enhance your reading sessions. Lightweight yet sturdy for easy portability.An ergonomic library stool chair crafted to enhance your reading sessions. Lightweight yet sturdy for easy portability."
     },
     {
         id: 4,

@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
+import { Card, CardContent } from "../ui/Card"
 
 export default function FeaturedProducts() {
   const products = [
@@ -12,74 +13,73 @@ export default function FeaturedProducts() {
     },
     {
       id: 2,
-      name: "Library Stool Chair",
+      name: "Stool Chair",
       price: 99,
       image: "/product/Image (5).png"
     },
     {
       id: 3,
-      name: "Library Stool Chair",
+      name: "HomeChair",
       price: 99,
       image: "/product/Image (12).png"
     },
     {
       id: 4,
-      name: "Library Stool Chair",
+      name: "comfort Sofa",
       price: 99,
       image: "/product/Image (9).png"
     },
     {
       id: 5,
-      name: "Library Stool Chair",
+      name: "Wooden Chair",
       price: 99,
       image: "/category/Image (9).png"
     }
   ]
 
   return (
-    <section className=" pt-[10rem] ">
-    <div className="w-full max-w-[100rem] mx-auto">
+    <section className="w-full px-4 py-8 md:px-6   lg:px-[8rem] lg:pt-[6rem]">
+    <div className="container mx-auto" style={{ maxWidth: '1200px' }}>
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-semibold tracking-wider">
+        <h2 className="text-2xl font-bold tracking-wider">
           FEATURED PRODUCTS
         </h2>
         <Link 
           href="/products" 
-          className="text-md border-b border-black pb-0.5 hover:opacity-70 transition-opacity"
+          className="text-sm border-b border-black hover:opacity-70 transition-opacity"
         >
           View all
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6 overflow-x-auto lg:pt-4 hide-scrollbar">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-2">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col space-y-4 lg:px-2">
-            <div className="relative w-[10rem] h-[10rem] bg-gray-100 overflow-hidden">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-medium truncate">{product.name}</h3>
-              <p className="text-sm font-semibold">${product.price}</p>
-            </div>
-          </div>
+          <Card key={product.id} className="border-none shadow-none w-[224px]">
+            <CardContent className="p-0">
+              <Link href={`/products/${product.id}`} className="space-y-3">
+                <div className="overflow-hidden rounded-lg bg-gray-100 w-[12rem] h-[12rem]">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={224}
+                    height={224}
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="space-y-1 text-sm mt-3 mb-5 flex justify-between px-2">
+                  <h3 className="font-medium text-gray-900 text-base">
+                    {product.name}
+                  </h3>
+                  <p className="font-medium text-sm">
+                    ${product.price}
+                  </p>
+                </div>
+              </Link>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
-    <style jsx global>{`
-      .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-    `}</style>
   </section>
-  
   )
 }
 

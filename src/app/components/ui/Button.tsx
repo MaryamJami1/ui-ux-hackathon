@@ -23,7 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`rounded bg-blue-500 text-white hover:bg-blue-600 ${sizeClasses[size]} ${className}`}
+      className={`rounded-lg bg-[#00B5A5] text-white hover:bg-[#3e8983] ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}
