@@ -37,10 +37,10 @@ export default function FeaturedProducts() {
   ]
 
   return (
-    <section className="px-2 pt-12 md:px-6">
+    <section className=" pt-[10rem] ">
     <div className="w-full max-w-[100rem] mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-bold tracking-wider">
+        <h2 className="text-2xl font-semibold tracking-wider">
           FEATURED PRODUCTS
         </h2>
         <Link 
@@ -53,7 +53,7 @@ export default function FeaturedProducts() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6 overflow-x-auto lg:pt-4 hide-scrollbar">
         {products.map((product) => (
           <div key={product.id} className="flex flex-col space-y-4 lg:px-2">
-            <div className="relative w-[150px] h-[150px] bg-gray-100 overflow-hidden">
+            <div className="relative w-[10rem] h-[10rem] bg-gray-100 overflow-hidden">
               <Image
                 src={product.image}
                 alt={product.name}
