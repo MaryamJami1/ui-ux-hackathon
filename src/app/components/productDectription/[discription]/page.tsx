@@ -23,7 +23,7 @@ export default function Page({ params }: { params: { discription: string } }) {
     }, [])
     if (product) {
         return ( <>
-            <div className="flex flex-col md:flex-row gap-8 p-4 max-w-6xl mx-auto lg:px-[5rem] lg:py-[4rem]">
+            <div className="flex flex-col md:flex-row gap-8 px-11 py-11 max-w-6xl mx-auto lg:px-[5rem] lg:py-[4rem]">
                 {/* Product Image */}
                 <div className="w-full md:w-1/2">
                     <Image
