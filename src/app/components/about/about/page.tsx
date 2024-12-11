@@ -3,7 +3,7 @@ import { FaShippingFast, FaHandSparkles, FaMoneyBillWave, FaRecycle } from "reac
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen lg:px-20">
+        <main className="min-h-screen lg:px-[8rem]">
             <div className="flex flex-col md:flex-row justify-between  items-stretch pt-20">
                 {/* About Us Section */}
                 <section className="bg-[#007B7B] mx-4 flex-1 px-10 py-16 md:py-6 flex flex-col justify-center">
