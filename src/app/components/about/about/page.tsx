@@ -3,7 +3,7 @@ import { FaShippingFast, FaHandSparkles, FaMoneyBillWave, FaRecycle } from "reac
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen lg:px-[8rem]">
+        <main className="min-h-screen lg:px-[7rem]">
             <div className="flex flex-col md:flex-row justify-between  items-stretch pt-20">
                 {/* About Us Section */}
                 <section className="bg-[#007B7B] mx-4 flex-1 px-10 py-16 md:py-6 flex flex-col justify-center">
@@ -75,77 +75,77 @@ export default function AboutPage() {
             </section>
 
             {/* Popular Products Section */}
-            <section className="py-16 px-4 bg-white pt-[8rem]">
-    <h2 className="text-2xl md:text-3xl font-semibold mb-12 lg:ml-[7rem]">
-        Our Popular Products
-    </h2>
+            <section className="py-16 bg-white pt-[8rem]">
+                <h2 className="text-2xl md:text-3xl font-semibold mb-12 lg:ml-[7rem]">
+                    Our Popular Products
+                </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto">
-        {/* Left Side: Sofa */}
-        <div className="max-w-sm lg:ml-[6.5rem] bg-transparent rounded-lg overflow-hidden">
-            <div className="relative">
-                <Image
-                    src="/product/nathan-fertig-FBXuXp57eM0-unsplash.jpg"
-                    alt="The Poplar suede sofa"
-                    height={400}
-                    width={400}
-                    className="w-full h-64 object-cover"
-                />
-            </div>
-            <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-black">The Poplar suede sofa</h3>
-                <p className="text-[#007580] text-lg font-medium">$99.00</p>
-            </div>
-        </div>
-
-        {/* Right Side: Two Chairs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:mr-[5rem]">
-            {/* Top Chair */}
-            <div>
-                <div className="max-w-xs bg-transparent rounded-lg overflow-hidden">
-                    {/* Image Section */}
-                    <div className="h-64">
-                        <Image
-                            src="/product/Parent (1).png"
-                            alt="The Dandy Chair"
-                            height={400}
-                            width={400}
-                            className="w-full h-full object-contain"
-                        />
+                <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto">
+                    {/* Left Side: Sofa */}
+                    <div className="max-w-sm lg:ml-[6.5rem] bg-transparent rounded-lg overflow-hidden">
+                        <div className="relative">
+                            <Image
+                                src="/product/nathan-fertig-FBXuXp57eM0-unsplash.jpg"
+                                alt="The Poplar suede sofa"
+                                height={400}
+                                width={400}
+                                className="w-full h-64 object-cover"
+                            />
+                        </div>
+                        <div className="p-4 text-center">
+                            <h3 className="text-lg font-semibold text-black">The Poplar suede sofa</h3>
+                            <p className="text-[#007580] text-lg font-medium">$99.00</p>
+                        </div>
                     </div>
 
-                    {/* Text Section */}
-                    <div className="p-4 text-center">
-                        <h2 className="text-lg font-semibold text-black">The Dandy Chair</h2>
-                        <p className="text-[#007580] text-sm mt-2">$99.00</p>
+                    {/* Right Side: Two Chairs */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:mr-[5rem]">
+                        {/* Top Chair */}
+                        <div>
+                            <div className="max-w-xs bg-transparent rounded-lg overflow-hidden">
+                                {/* Image Section */}
+                                <div className="h-64">
+                                    <Image
+                                        src="/product/Parent (1).png"
+                                        alt="The Dandy Chair"
+                                        height={400}
+                                        width={400}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+
+                                {/* Text Section */}
+                                <div className="p-4 text-center">
+                                    <h2 className="text-lg font-semibold text-black">The Dandy Chair</h2>
+                                    <p className="text-[#007580] text-sm mt-2">$99.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom Chair */}
+                        <div>
+                            <div className="max-w-xs  bg-transparent rounded-lg overflow-hidden">
+                                {/* Image Section */}
+                                <div className="h-64">
+                                    <Image
+                                        src="/product/Parent (2).png"
+                                        alt="The Dandy Chair"
+                                        height={400}
+                                        width={400}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+
+                                {/* Text Section */}
+                                <div className="p-4 text-center">
+                                    <h2 className="text-lg font-semibold text-black">The Dandy Chair</h2>
+                                    <p className="text-[#007580] text-sm mt-2">$99.00</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            {/* Bottom Chair */}
-            <div>
-                <div className="max-w-xs  bg-transparent rounded-lg overflow-hidden">
-                    {/* Image Section */}
-                    <div className="h-64">
-                        <Image
-                            src="/product/Parent (2).png"
-                            alt="The Dandy Chair"
-                            height={400}
-                            width={400}
-                            className="w-full h-full object-contain"
-                        />
-                    </div>
-
-                    {/* Text Section */}
-                    <div className="p-4 text-center">
-                        <h2 className="text-lg font-semibold text-black">The Dandy Chair</h2>
-                        <p className="text-[#007580] text-sm mt-2">$99.00</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
 
         </main>
