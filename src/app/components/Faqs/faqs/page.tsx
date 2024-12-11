@@ -42,9 +42,9 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="w-full px-4 py-12 md:py-16 lg:py-20">
+    <section className="w-full px-4 py-12 md:py-16 lg:pt-20">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+        <div className="text-center">
           <h2 className="text-[40px] font-semibold mb-4 text-[#333333]">
             Questions Looks Here
           </h2>
@@ -53,7 +53,7 @@ export default function FAQSection() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 lg:p-20 pt-11">
           {faqItems.map((item, index) => (
             <div
               key={index}

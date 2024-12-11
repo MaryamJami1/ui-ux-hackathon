@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { Phone, ShoppingCart, HelpCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -6,8 +6,12 @@ import { useState } from "react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleLinkClick = () => {
+    setMenuOpen(false); // Close the menu when a link is clicked
+  };
+
   return (
-    <header className="w-full font-inter ">
+    <header className="w-full font-inter">
       {/* Top Banner */}
       <div className="w-full bg-[#2B2A4C] text-white px-4 py-2.5">
         <div className="container mx-auto flex justify-between items-center text-sm">
@@ -91,27 +95,64 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="border-b bg-white lg:px-[6rem]">
+      {/* Sidebar for Mobile */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-white z-50 shadow-lg transition-transform ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        } w-3/4 sm:w-1/2 md:hidden`}
+      >
+        
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="p-4 text-gray-500"
+        >
+          <X className="w-6 h-6" />
+        </button>
+        <ul className="flex flex-col gap-4 px-6 mt-4">
+          {["Home", "Shop", "About", "Contact Us", "Faqs"].map((item) => (
+            <li key={item}>
+              <Link
+                href={
+                  item === "Contact Us"
+                    ? "/components/contact_us/contact"
+                    : item === "Home"
+                    ? "/"
+                    : item === "About"
+                    ? "/components/about/about"
+                    : item === "Shop"
+                    ? "/components/Shop/shop"
+                     : item === "Faqs"
+                    ? "/components/Faqs/faqs"
+                    : `/${item.toLowerCase()}`
+                }
+                className="text-gray-600 hover:text-gray-900"
+                onClick={handleLinkClick} // Close the menu on link click
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Navigation for Desktop */}
+      <nav className="border-b bg-white lg:px-[6rem] hidden md:block">
         <div className="container mx-auto px-4">
-          <div
-            className={`flex-col md:flex md:flex-row justify-between items-center md:h-14 transition-all ${menuOpen ? "flex" : "hidden md:flex"
-              }`}
-          >
-            <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-              {["Home", "Shop",  "About", "Contact Us"].map((item) => (
+          <div className="flex justify-between items-center md:h-14">
+            <ul className="flex items-center gap-8">
+              {["Home", "Shop", "About", "Contact Us"].map((item) => (
                 <li key={item}>
                   <Link
                     href={
                       item === "Contact Us"
-                          ? "/components/contact_us/contact"
-                           : item === "Home"
-                          ? "/"
-                           : item === "About"
-                          ? "/components/about/about"
-                           : item === "Shop"
-                          ? "/components/Shop/shop"
-                          : `/${item.toLowerCase()}`
+                        ? "/components/contact_us/contact"
+                        : item === "Home"
+                        ? "/"
+                        : item === "About"
+                        ? "/components/about/about"
+                        : item === "Shop"
+                        ? "/components/Shop/shop"
+                        : `/${item.toLowerCase()}`
                     }
                     className="text-gray-600 hover:text-gray-900"
                   >
@@ -120,9 +161,7 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-
-
-            <div className="flex items-center gap-2 text-gray-600 mt-4 md:mt-0">
+            <div className="flex items-center gap-2 text-gray-600">
               <span>Contact:</span>
               <Link
                 href="tel:(808) 555-0111"
