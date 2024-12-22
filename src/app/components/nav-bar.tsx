@@ -2,12 +2,16 @@
 import Link from "next/link";
 import { Phone, ShoppingCart, HelpCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
+
 
 export default function Navbar() {
+  const { cartItems } = useCart(); 
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLinkClick = () => {
-    setMenuOpen(false); // Close the menu when a link is clicked
+    setMenuOpen(false);
   };
 
   return (
@@ -82,7 +86,7 @@ export default function Navbar() {
             >
               <ShoppingCart className="w-6 h-6" />
               <span className="bg-[#00B4B4] text-white rounded-full w-5 h-5 flex items-center justify-center text-sm">
-                2
+              {cartItems.length}
               </span>
             </Link>
             <button

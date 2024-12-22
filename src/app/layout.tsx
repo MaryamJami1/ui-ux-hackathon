@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/nav-bar";
 import Footer from "./components/footer/Footer";
+import { CartProvider } from "./context/CartContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // ToastContainer ke liye styles
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,7 +18,6 @@ export const metadata: Metadata = {
   description: "by maryam jamil",
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -23,14 +25,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-           
-
       <body className={inter.className}>
-      <NavBar />
-        {children}
-        <Footer/>
-        </body>
+        <CartProvider>
+          <NavBar />
+          {children}
+          <Footer />
 
+          {/* Add ToastContainer here */}
+          <ToastContainer
+            position="top-right"
+            autoClose={1000}
+            hideProgressBar
+            closeButton={false}
+            className="z-50 mt-12"
+          />
+        </CartProvider>
+      </body>
     </html>
-  )
+  );
 }

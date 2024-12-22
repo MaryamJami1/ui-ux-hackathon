@@ -1,18 +1,26 @@
-import { ShoppingCart } from 'lucide-react'
-import { Badge } from "@/app/components/ui/Badge"
-import Image from 'next/image'
-import Link from 'next/link'
+"use client"
+import { ShoppingCart } from 'lucide-react';
+import { Badge } from "@/app/components/ui/Badge";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useCart } from "../../context/CartContext";
+import { Button } from '../ui/Button';
+import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toast notifications
+
 interface Product {
-  id: number
-  title: string
-  price: number
-  originalPrice?: number
-  image: string
-  isNew?: boolean
-  isSale?: boolean
+  id: number;
+  title: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isNew?: boolean;
+  isSale?: boolean;
 }
 
 export default function OurProduct() {
+  const { addToCart } = useCart();
+
   const products: Product[] = [
     {
       id: 1,
@@ -68,13 +76,36 @@ export default function OurProduct() {
       price: 20,
       image: "/hot/card (1).png"
     }
-  ]
+  ];
+
+  // Customized toast notification function
+  const notify = () => {
+    toast.success("Product added to cart!", {
+      position: "top-right", 
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeButton: false,
+      className: "bg-green-500 text-white font-semibold p-4 rounded-md",
+    });
+  };
+
+  const handleAddToCart = (product: Product) => {
+    const cartItem = {
+      id: product.id,
+      name: product.title,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+      size: '', 
+      color: ''
+    };
+    addToCart(cartItem); // Add item to cart
+    notify(); // Show the toast notification after adding the product
+  };
 
   return (
     <div className="container mx-auto px-4 py-20">
-      
-      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight  mb-8"> Our Products</h1>
-
+      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">Our Products</h1>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((product) => (
           <div key={product.id} className="group relative rounded-lg bg-white">
@@ -90,13 +121,13 @@ export default function OurProduct() {
                 </Badge>
               )}
               <Link href={`components/productDectription/${product.id}`} >
-              <Image
-                src={product.image}
-                alt={product.title}
-                height={400}
-                width={400}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  height={400}
+                  width={400}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </Link>
             </div>
             <div className="mt-4 flex items-center justify-between">
@@ -113,15 +144,18 @@ export default function OurProduct() {
                   )}
                 </div>
               </div>
-              <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+              <Button
+                className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]"
+                onClick={() => handleAddToCart(product)} // Add to cart functionality
+              >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Add to cart</span>
-              </button>
+              </Button>
             </div>
           </div>
         ))}
       </div>
+     
     </div>
-  )
+  );
 }
-
