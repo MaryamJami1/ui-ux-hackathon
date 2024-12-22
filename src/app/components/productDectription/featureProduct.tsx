@@ -45,7 +45,7 @@ export default function FeaturedProducts() {
             FEATURED PRODUCTS
           </h2>
           <Link
-            href="/products"
+            href="../Shop/shop"
             className="text-sm border-b border-black hover:opacity-70 transition-opacity"
           >
             View all
