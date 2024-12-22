@@ -15,7 +15,7 @@ export default function Header() {
               Best Furniture Collection For Your Interior.
             </h1>
             <Link
-              href="#"
+              href="/components/Shop/shop"
               className="group mt-4 inline-flex items-center gap-2 rounded-md bg-[#00BFB3] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#00BFB3]/90"
             >
               Shop Now
