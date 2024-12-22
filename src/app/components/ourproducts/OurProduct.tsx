@@ -85,7 +85,7 @@ export default function OurProduct() {
       autoClose: 1000,
       hideProgressBar: true,
       closeButton: false,
-      className: "bg-green-500 text-white font-semibold p-4 rounded-md",
+      // className: "bg-green-500 text-white font-semibold p-4 rounded-md",
     });
   };
 

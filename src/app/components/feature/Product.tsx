@@ -67,7 +67,7 @@ export default function FeaturedProducts() {
       autoClose: 1000, // Hide after 3 seconds
       hideProgressBar: true, // Hide progress bar
       closeButton: false, // Disable close button
-      className: "bg-green-500 text-white font-semibold p-4 rounded-md", // Customize your toast style
+      // className: "bg-green-500 text-white font-semibold p-4 rounded-md", // Customize your toast style
     });
   };
 
