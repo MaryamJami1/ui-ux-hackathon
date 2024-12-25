@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/app/components/ui/Badge";
@@ -9,66 +10,57 @@ import { toast, ToastContainer } from "react-toastify"; // Import react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for toast notifications
 
 interface Product {
-  id: number;
-  name: string;
+  _id: string;
+  title: string;
   price: number;
   originalPrice?: number;
+  isNew?: boolean;
+  isSale?: boolean;
+  isFeatured?: boolean;
   image: string;
-  badge?: {
-    text: string;
-    variant: "default" | "secondary" | "destructive" | "outline";
-  };
 }
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Library Stool Chair",
-    price: 20,
-    image: "/product/Image (5).png",
-    badge: {
-      text: "New",
-      variant: "default",
-    },
-  },
-  {
-    id: 2,
-    name: "Library Stool Chair",
-    price: 20,
-    originalPrice: 30,
-    image: "/product/Image (9).png",
-    badge: {
-      text: "Sales",
-      variant: "destructive",
-    },
-  },
-  {
-    id: 3,
-    name: "Library Stool Chair",
-    price: 20,
-    image: "/product/Image (10).png",
-  },
-  {
-    id: 4,
-    name: "Library Stool Chair",
-    price: 20,
-    image: "/product/Image (11).png",
-  },
-];
 
 export default function FeaturedProducts() {
   const { addToCart } = useCart();
-  console.log(addToCart);
+  const [products, setProducts] = useState<Product[]>([]); // State to store fetched products
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
+  const [error, setError] = useState<string | null>(null); // Error state
 
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      try {
+        const response = await fetch("/api/featured", {
+          method: "GET", // Ensure GET method is specified
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch featured products");
+        }
+        const data = await response.json();
+        setProducts(data); // Set fetched products to state
+        setLoading(false);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Something went wrong!");
+        }
+        setLoading(false);
+      }
+    };
+  
+    fetchFeaturedProducts();
+  }, []);
+  
   // Customized toast notification function
   const notify = () => {
     toast.success("Product added to cart!", {
-      position: "top-right", // Correct position usage as a string
-      autoClose: 1000, // Hide after 3 seconds
-      hideProgressBar: true, // Hide progress bar
-      closeButton: false, // Disable close button
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeButton: false,
     });
   };
+
 
   return (
     <>
@@ -77,21 +69,29 @@ export default function FeaturedProducts() {
           <h2 className="text-3xl font-bold tracking-tight mb-8">Featured Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="group overflow-hidden rounded-xl">
+              <Card key={product._id} className="group overflow-hidden rounded-xl">
                 <CardContent className="p-0">
                   <div className="relative">
-                    {product.badge && (
+                    {product.isNew && (
                       <Badge
-                        variant={product.badge.variant}
+                        variant="default"
                         className="absolute top-4 left-4 z-10"
                       >
-                        {product.badge.text}
+                        New
+                      </Badge>
+                    )}
+                    {product.isSale && (
+                      <Badge
+                        variant="destructive"
+                        className="absolute top-4 left-4 z-10"
+                      >
+                        Sale
                       </Badge>
                     )}
                     <div className="aspect-square overflow-hidden">
                       <Image
                         src={product.image}
-                        alt={product.name}
+                        alt={product.title}
                         width={400}
                         height={400}
                         className="object-cover transition-transform group-hover:scale-105"
@@ -99,7 +99,7 @@ export default function FeaturedProducts() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-medium text-lg mb-2">{product.name}</h3>
+                    <h3 className="font-medium text-lg mb-2">{product.title}</h3>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-bold">${product.price}</span>
@@ -115,8 +115,8 @@ export default function FeaturedProducts() {
                         aria-label="Add to cart"
                         onClick={() => {
                           addToCart({
-                            id: product.id,
-                            name: product.name,
+                            id: product._id,
+                            name: product.title,
                             price: product.price,
                             image: product.image,
                             quantity: 1, // Default quantity
@@ -136,7 +136,7 @@ export default function FeaturedProducts() {
           </div>
         </div>
       </section>
-
+      <ToastContainer />
     </>
   );
 }

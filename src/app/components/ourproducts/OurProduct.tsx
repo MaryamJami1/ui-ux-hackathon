@@ -1,15 +1,17 @@
 "use client"
+import { useState, useEffect } from "react";
 import { ShoppingCart } from 'lucide-react';
 import { Badge } from "@/app/components/ui/Badge";
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from "../../context/CartContext";
 import { Button } from '../ui/Button';
-import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
+import { toast } from "react-toastify"; // Import toast
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toast notifications
+import { urlFor } from "@/sanity/lib/image";
 
 interface Product {
-  id: number;
+  _id: string;
   title: string;
   price: number;
   originalPrice?: number;
@@ -20,83 +22,54 @@ interface Product {
 
 export default function OurProduct() {
   const { addToCart } = useCart();
-
-  const products: Product[] = [
-    {
-      id: 1,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (5).png",
-      isNew: true
-    },
-    {
-      id: 2,
-      title: "Library Stool Chair",
-      price: 20,
-      originalPrice: 30,
-      image: "/product/Image (9).png",
-      isSale: true
-    },
-    {
-      id: 3,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (10).png"
-    },
-    {
-      id: 4,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (11).png"
-    },
-    {
-      id: 5,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/category/Image (10).png",
-      isNew: true
-    },
-    {
-      id: 6,
-      title: "Library Stool Chair",
-      price: 20,
-      originalPrice: 30,
-      image: "/hot/card (2).png",
-      isSale: true
-    },
-    {
-      id: 7,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (12).png"
-    },
-    {
-      id: 8,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/hot/card (1).png"
-    }
-  ];
+  const [products, setProducts] = useState<Product[]>([]);
 
   // Customized toast notification function
   const notify = () => {
     toast.success("Product added to cart!", {
-      position: "top-right", 
+      position: "top-right",
       autoClose: 1000,
       hideProgressBar: true,
       closeButton: false,
-   
     });
   };
 
+ 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/products", {
+          method: "GET",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data = await res.json();
+        console.log(data)
+        
+        
+        const formattedProducts = data.map((product: any) => ({
+          ...product,
+          image: urlFor(product.image).url(),  
+        }));
+
+        setProducts(formattedProducts); 
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };    
+    
+    fetchProducts();
+  }, []);
+
   const handleAddToCart = (product: Product) => {
     const cartItem = {
-      id: product.id,
+      id: product._id,  // Changed to use _id from Sanity
       name: product.title,
       price: product.price,
       image: product.image,
       quantity: 1,
-      size: '', 
+      size: '',
       color: ''
     };
     addToCart(cartItem); // Add item to cart
@@ -108,7 +81,7 @@ export default function OurProduct() {
       <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">Our Products</h1>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((product) => (
-          <div key={product.id} className="group relative rounded-lg bg-white">
+          <div key={product._id} className="group relative rounded-lg bg-white">
             <div className="relative aspect-square overflow-hidden rounded-lg">
               {product.isNew && (
                 <Badge className="absolute left-3 top-3 bg-emerald-500 hover:bg-emerald-600">
@@ -117,12 +90,12 @@ export default function OurProduct() {
               )}
               {product.isSale && (
                 <Badge className="absolute left-3 top-3 bg-orange-500 hover:bg-orange-600">
-                  Sales
+                  Sale
                 </Badge>
               )}
-              <Link href={`components/productDectription/${product.id}`} >
+              <Link href={`components/productDectription/${product._id}`} >
                 <Image
-                  src={product.image}
+                  src={product.image}  // Now this will be the processed image URL
                   alt={product.title}
                   height={400}
                   width={400}
@@ -155,7 +128,6 @@ export default function OurProduct() {
           </div>
         ))}
       </div>
-     
     </div>
   );
 }
