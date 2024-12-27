@@ -81,8 +81,8 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   };
 
-  https://e-commerce-lemon-nine-23.vercel.app/components/productDectription/f279cb84-b17f-4b13-bb9c-0756cc1f1929
 
+  
   if (product) {
     return (
       <>
