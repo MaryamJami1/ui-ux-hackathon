@@ -44,7 +44,12 @@ export default defineType({
       title: 'Is Featured?',
       type: 'boolean',
       description: 'Mark if this product is featured',
-      initialValue: false, // Default value
+      initialValue: false,
+    }),
+    defineField({
+      name: 'description', // Adding description field
+      title: 'Description',
+      type: 'text', // You can use `text` type for longer descriptions
     }),
   ],
 });
