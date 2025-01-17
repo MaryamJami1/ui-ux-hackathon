@@ -1,26 +1,31 @@
+"use client"
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { fetchCategories } from "@/sanity/lib/categories";
+
+type Category = {
+    _id: string;
+    title: string;
+    image: {
+        asset: {
+            url: string;
+        };
+    };
+    products: number | string; // Accept both number or string for products
+};
+
 
 export default function Categories() {
-    const categories = [
-        {
-            name: "Wing Chair",
-            products: "3,584 Products",
-            image: "/category/Image (9).png",
-            href: "/categories/wing-chair"
-        },
-        {
-            name: "Wooden Chair",
-            products: "157 Products",
-            image: "/category/Image (10).png",
-            href: "/categories/wooden-chair"
-        },
-        {
-            name: "Desk Chair",
-            products: "154 Products",
-            image: "/category/Image (11).png",
-            href: "/categories/desk-chair"
+    const [categories, setCategories] = useState<Category[]>([]); // Use Category type
+
+    useEffect(() => {
+        // Fetch categories data on component mount
+        async function getCategories() {
+            const data = await fetchCategories();
+            setCategories(data);
         }
-    ];
+        getCategories();
+    }, []);
 
     return (
         <section className="w-full px-4 py-[7rem] md:px-6">
@@ -29,13 +34,13 @@ export default function Categories() {
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {categories.map((category) => (
                         <div
-                            key={category.name}
+                            key={category._id} // Now TypeScript knows that _id exists
                             className="group relative overflow-hidden rounded-lg"
                         >
                             <div className="aspect-[4/3] w-full">
                                 <Image
-                                    src={category.image}
-                                    alt={category.name}
+                                    src={category.image.asset.url} // Fetch the image URL
+                                    alt={category.title}
                                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     priority
                                     width={400}
@@ -45,10 +50,10 @@ export default function Categories() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                                 <div className="absolute bottom-0 p-6">
                                     <h3 className="mb-2 font-inter text-xl font-medium text-white">
-                                        {category.name}
+                                        {category.title}
                                     </h3>
                                     <p className="font-inter text-sm text-gray-200">
-                                        {category.products}
+                                        {category.products} {/* Products count */}
                                     </p>
                                 </div>
                             </div>
