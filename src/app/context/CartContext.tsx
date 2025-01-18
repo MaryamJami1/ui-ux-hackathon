@@ -2,13 +2,13 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface CartItem {
-  id: number;
+  id: number | string;
   name: string;
   price: number;
   image: string;
   quantity: number;
-  size: string;
-  color: string;
+  size?: string; // Optional
+  color?: string; // Optional
 }
 
 interface CartContextType {

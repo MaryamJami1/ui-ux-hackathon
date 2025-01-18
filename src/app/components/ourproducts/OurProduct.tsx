@@ -1,128 +1,84 @@
-"use client"
-import { ShoppingCart } from 'lucide-react';
+"use client";
+import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/app/components/ui/Badge";
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "../../context/CartContext";
-import { Button } from '../ui/Button';
-import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toast notifications
+import { Button } from "../ui/Button";
+import { toast, ToastContainer } from "react-toastify"; // Toast notifications
+import "react-toastify/dist/ReactToastify.css"; // Toast CSS
+import { useState, useEffect } from "react";
+import { fetchProducts } from "@/sanity/lib/product"; // Sanity fetch function
 
 interface Product {
-  id: number;
+  _id: string;
   title: string;
   price: number;
-  originalPrice?: number;
-  image: string;
-  isNew?: boolean;
-  isSale?: boolean;
+  priceWithoutDiscount?: number;
+  image: {
+    asset: {
+      url: string;
+    };
+  };
+  tags: string[]; // Tags like 'featured', 'instagram', etc.
+  description?: string;
 }
 
 export default function OurProduct() {
   const { addToCart } = useCart();
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const products: Product[] = [
-    {
-      id: 1,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (5).png",
-      isNew: true
-    },
-    {
-      id: 2,
-      title: "Library Stool Chair",
-      price: 20,
-      originalPrice: 30,
-      image: "/product/Image (9).png",
-      isSale: true
-    },
-    {
-      id: 3,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (10).png"
-    },
-    {
-      id: 4,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (11).png"
-    },
-    {
-      id: 5,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/category/Image (10).png",
-      isNew: true
-    },
-    {
-      id: 6,
-      title: "Library Stool Chair",
-      price: 20,
-      originalPrice: 30,
-      image: "/hot/card (2).png",
-      isSale: true
-    },
-    {
-      id: 7,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/product/Image (12).png"
-    },
-    {
-      id: 8,
-      title: "Library Stool Chair",
-      price: 20,
-      image: "/hot/card (1).png"
-    }
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchProducts(); // Fetch products from Sanity
+      setProducts(data.slice(7, 16)); // Display first 8 products
+    };
+    fetchData();
+  }, []);
 
-  // Customized toast notification function
   const notify = () => {
     toast.success("Product added to cart!", {
-      position: "top-right", 
+      position: "top-right",
       autoClose: 1000,
       hideProgressBar: true,
       closeButton: false,
-   
     });
   };
 
   const handleAddToCart = (product: Product) => {
     const cartItem = {
-      id: product.id,
+      id: product._id,
       name: product.title,
       price: product.price,
-      image: product.image,
+      image: product.image.asset.url,
       quantity: 1,
-      size: '', 
-      color: ''
     };
-    addToCart(cartItem); // Add item to cart
-    notify(); // Show the toast notification after adding the product
+    addToCart(cartItem);
+    notify();
   };
 
   return (
     <div className="container mx-auto px-4 py-20">
-      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">Our Products</h1>
+      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">
+        Our Products
+      </h1>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((product) => (
-          <div key={product.id} className="group relative rounded-lg bg-white">
+          <div key={product._id} className="group relative rounded-lg bg-white">
             <div className="relative aspect-square overflow-hidden rounded-lg">
-              {product.isNew && (
+              {product.tags.includes("featured") && (
                 <Badge className="absolute left-3 top-3 bg-emerald-500 hover:bg-emerald-600">
                   New
                 </Badge>
               )}
-              {product.isSale && (
+              {product.tags.includes("gallery") && (
                 <Badge className="absolute left-3 top-3 bg-orange-500 hover:bg-orange-600">
-                  Sales
+                  Sale
                 </Badge>
               )}
-              <Link href={`components/productDectription/${product.id}`} >
+              <Link href={`components/productDectription/${product._id}`}>
                 <Image
-                  src={product.image}
+                  src={product.image.asset.url}
                   alt={product.title}
                   height={400}
                   width={400}
@@ -137,16 +93,16 @@ export default function OurProduct() {
                   <span className="text-lg font-medium text-[#1C1B1F]">
                     ${product.price}
                   </span>
-                  {product.originalPrice && (
+                  {product.priceWithoutDiscount && (
                     <span className="text-sm text-gray-500 line-through">
-                      ${product.originalPrice}
+                      ${product.priceWithoutDiscount}
                     </span>
                   )}
                 </div>
               </div>
               <Button
                 className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]"
-                onClick={() => handleAddToCart(product)} // Add to cart functionality
+                onClick={() => handleAddToCart(product)}
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Add to cart</span>
@@ -155,7 +111,7 @@ export default function OurProduct() {
           </div>
         ))}
       </div>
-     
+      <ToastContainer /> {/* Toast notifications */}
     </div>
   );
 }
