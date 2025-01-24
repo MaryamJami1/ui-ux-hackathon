@@ -6,11 +6,11 @@ export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortOrder, setSortOrder] = useState('');
 
-  const handleCategoryChange = (e:any) => {
+  const handleCategoryChange = (e: any) => {
     setSelectedCategory(e.target.value);
   };
 
-  const handleSortChange = (e:any) => {
+  const handleSortChange = (e: any) => {
     setSortOrder(e.target.value);
   };
 
@@ -22,11 +22,12 @@ export default function ShopPage() {
       </header>
 
       {/* Filter and Sort Section */}
-      <section className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+      {/* Filter and Sort Section */}
+      <section className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4  p-4 rounded-lg shadow-md">
         <select
           value={selectedCategory}
           onChange={handleCategoryChange}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600"
+          className="w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:outline-none bg-white shadow-sm transition-all duration-300 hover:border-teal-500"
         >
           <option value="All">All Categories</option>
           <option value="Furniture">Wing Chairs</option>
@@ -37,7 +38,7 @@ export default function ShopPage() {
         <select
           value={sortOrder}
           onChange={handleSortChange}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600"
+          className="w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:outline-none bg-white shadow-sm transition-all duration-300 hover:border-teal-500"
         >
           <option value="">Sort By</option>
           <option value="price-asc">Price: Low to High</option>
@@ -45,6 +46,7 @@ export default function ShopPage() {
           <option value="popularity">Popularity</option>
         </select>
       </section>
+
 
       {/* Products Section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
