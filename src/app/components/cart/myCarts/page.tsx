@@ -98,7 +98,7 @@ export default function ShoppingCartHeader() {
               </span>
             </div>
             <button className="w-full bg-[#00A5AB] text-white font-semibold rounded-full py-3 px-4 mt-4 hover:bg-[#008f94] transition-colors">
-              Member Checkout
+              Checkout
             </button>
           </div>
         </div>

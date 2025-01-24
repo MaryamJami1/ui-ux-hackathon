@@ -1,5 +1,4 @@
 import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
-// import { Input } from "@/components/ui/input"
 import { Button } from "@/app/components/ui/Button"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,10 +11,10 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image 
-                src="/category/Logo Icon.png" 
-                alt="Comforty Logo" 
-                width={24} 
+              <Image
+                src="/category/Logo Icon.png"
+                alt="Comforty Logo"
+                width={24}
                 height={24}
                 className="text-[#00B4B4]"
               />
@@ -52,8 +51,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Sofa', 'Armchair', 'Wing Chair', 'Desk Chair', 'wooden Chair', 'Park Bench'].map((item) => (
                 <li key={item}>
-                  <Link 
-                    href="#" 
+                  <Link
+                    href="#"
                     className={`text-sm ${item === 'Desk Chair' ? 'text-[#000000]' : ' hover:text-[#00B4B4]'}`}
                   >
                     {item}
@@ -81,9 +80,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold uppercase tracking-wider">Newsletter</h3>
             <div className="space-y-2">
-              <input 
-                type="email" 
-                placeholder="Your email" 
+              <input
+                type="email"
+                placeholder="Your email"
                 className="bg-white"
               />
               <Button className="w-full bg-[#00B4B4] hover:bg-[#00B4B4]/90">
@@ -91,7 +90,7 @@ export default function Footer() {
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nullam tincidunt erat enim.
             </p>
           </div>
@@ -108,14 +107,14 @@ export default function Footer() {
             </Link>
           </p>
           <div className="mt-4  md:mt-0">
-            <Image 
-              src="/category/Group 13.png" 
-              alt="PayPal" 
-              width={180} 
+            <Image
+              src="/category/Group 13.png"
+              alt="PayPal"
+              width={180}
               height={180}
               className="opacity-50"
             />
-          
+
           </div>
         </div>
       </div>
