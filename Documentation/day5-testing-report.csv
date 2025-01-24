@@ -1,0 +1,6 @@
+Feature,Description,Test Case,Expected Result,Actual Result,Pass/Fail,Comments
+Homepage,Testing homepage load time and responsiveness,Page loads within optimal time,Page should load within 3 seconds,Page loaded in 0.5 seconds,Pass,Excellent performance across all screen sizes
+Homepage,Testing homepage layout,All sections are visible and correctly aligned,Layout appears correctly with no missing sections,All sections appeared correctly,Pass,Responsive design and layout tested on multiple devices
+Homepage,Testing performance metrics: FCP,First Contentful Paint (FCP) should be under 0.5s,FCP should be under 0.5 seconds,FCP recorded at 0.2 seconds,Pass,No delays in rendering initial content
+Homepage,Testing performance metrics: LCP,Largest Contentful Paint (LCP) should be under 1s,LCP should be under 1 second,LCP recorded at 0.5 seconds,Pass,Largest content loaded within acceptable limits
+Homepage,Testing performance metrics: CLS,Cumulative Layout Shift (CLS) should be near 0,CLS should remain below 0.1,CLS recorded as 0,Pass,No layout shifts observed during page load
