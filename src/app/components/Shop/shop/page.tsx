@@ -29,9 +29,9 @@ export default function ShopPage() {
           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600"
         >
           <option value="All">All Categories</option>
-          <option value="Furniture">Furniture</option>
-          <option value="Chairs">Chairs</option>
-          <option value="Tables">Tables</option>
+          <option value="Furniture">Wing Chairs</option>
+          <option value="Chairs">Wooden Chairs</option>
+          <option value="Tables">Desk Chairs</option>
         </select>
 
         <select
