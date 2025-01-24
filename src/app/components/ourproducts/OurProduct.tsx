@@ -30,8 +30,8 @@ export default function OurProduct() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchProducts(); // Fetch products from Sanity
-      setProducts(data.slice(7, 16)); // Display first 8 products
+      const data = await fetchProducts(); 
+      setProducts(data.slice(7, 16)); // Display 8 products
     };
     fetchData();
   }, []);
