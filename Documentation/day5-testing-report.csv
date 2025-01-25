@@ -1,4 +1,4 @@
-Metric,Score,Details
+Metrics,Score,Details
 Performance,100/100,Excellent performance with fast load times.
 First Contentful Paint,0.2s,The first content appeared in 0.2 seconds.
 Largest Contentful Paint,0.5s,The largest content element loaded in 0.5 seconds.
