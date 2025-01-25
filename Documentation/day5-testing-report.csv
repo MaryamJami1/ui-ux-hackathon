@@ -1,7 +1,10 @@
-Metric,Score,Details
+Metrics,Score,Details
 Performance,100/100,Excellent performance with fast load times.
 First Contentful Paint,0.2s,The first content appeared in 0.2 seconds.
 Largest Contentful Paint,0.5s,The largest content element loaded in 0.5 seconds.
-Accessibility,N/A,No specific data provided.
-Best Practices,N/A,No specific data provided.
-SEO,N/A,No specific data provided.
+Total Blocking Time,0ms,The page was not blocked from user interaction.
+Cumulative Layout Shift,0,No unexpected layout shifts occurred during page load.
+Speed Index,0.3s,The page content was visibly populated in 0.3 seconds.
+Accessibility,94/100,Good accessibility with minor issues (e.g., low contrast text).
+Best Practices,100/100,Fully compliant with modern web development standards.
+SEO,100/100,Well-optimized for search engines (e.g., valid structured data).
