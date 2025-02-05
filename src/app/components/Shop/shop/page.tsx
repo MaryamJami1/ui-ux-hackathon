@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "@/sanity/lib/product"; // API Function
@@ -8,7 +8,9 @@ interface Product {
   _id: string;
   title: string;
   price: number;
-  category: string;
+  category: {
+    title: string; // Assuming the category is an object with a `title` string field
+  }
   image: {
     asset: {
       url: string;
@@ -27,7 +29,7 @@ export default function ShopPage() {
     const getProducts = async () => {
       try {
         const data = await fetchProducts();
-        console.log("Fetched products:", data); // Check the fetched data
+        console.log("Fetched products:", data); // Log fetched data to check category field
         setProducts(data);
         setFilteredProducts(data); // Set all products initially
       } catch (error) {
@@ -62,7 +64,9 @@ export default function ShopPage() {
 
     // Filter by category
     if (category !== "All") {
-      filtered = filtered.filter(product => product.category === category);
+      filtered = filtered.filter(product => product.category.title === category);
+      ;
+      
     }
 
     console.log("After category filter:", filtered); // Log products after filtering
@@ -98,9 +102,9 @@ export default function ShopPage() {
           className="w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:outline-none bg-white shadow-sm transition-all duration-300 hover:border-teal-500"
         >
           <option value="All">All Categories</option>
-          <option value="Furniture">Wing Chairs</option>
-          <option value="Chairs">Wooden Chairs</option>
-          <option value="Tables">Desk Chairs</option>
+          <option value="Wing Chair">Wing Chairs</option>
+          <option value="Wooden Chair">Wooden Chairs</option>
+          <option value="Desk Chair">Desk Chairs</option>
         </select>
 
         <select
