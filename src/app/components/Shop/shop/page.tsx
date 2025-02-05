@@ -1,17 +1,86 @@
 "use client"
-import Image from 'next/image';
-import { useState } from 'react';
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { fetchProducts } from "@/sanity/lib/product"; // API Function
+import Link from "next/link";
+
+interface Product {
+  _id: string;
+  title: string;
+  price: number;
+  category: string;
+  image: {
+    asset: {
+      url: string;
+    };
+  };
+}
 
 export default function ShopPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [sortOrder, setSortOrder] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOrder, setSortOrder] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
+  // Fetch products on component load
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        console.log("Fetched products:", data); // Check the fetched data
+        setProducts(data);
+        setFilteredProducts(data); // Set all products initially
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    getProducts();
+  }, []);
+
+  // Handle category change
   const handleCategoryChange = (e: any) => {
-    setSelectedCategory(e.target.value);
+    const category = e.target.value;
+    setSelectedCategory(category);
+
+    // Filter products based on selected category
+    filterProducts(category, sortOrder);
   };
 
+  // Handle sort change
   const handleSortChange = (e: any) => {
-    setSortOrder(e.target.value);
+    const sortBy = e.target.value;
+    setSortOrder(sortBy);
+
+    // Sort products based on selected order
+    filterProducts(selectedCategory, sortBy);
+  };
+
+  // Filter and sort products
+  const filterProducts = (category: string, sortBy: string) => {
+    let filtered = [...products];
+    console.log("Filtering products for category:", category); // Log selected category
+
+    // Filter by category
+    if (category !== "All") {
+      filtered = filtered.filter(product => product.category === category);
+    }
+
+    console.log("After category filter:", filtered); // Log products after filtering
+
+    // Sort by price or popularity
+    if (sortBy === "price-asc") {
+      filtered = filtered.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-desc") {
+      filtered = filtered.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "popularity") {
+      // Assuming we have a popularity attribute, or you can use another sorting mechanism
+      filtered = filtered.sort((a, b) => b.price - a.price); // Replace with actual logic
+    }
+
+    console.log("After sorting:", filtered); // Log products after sorting
+
+    // Update filtered products state
+    setFilteredProducts(filtered);
   };
 
   return (
@@ -22,8 +91,7 @@ export default function ShopPage() {
       </header>
 
       {/* Filter and Sort Section */}
-      {/* Filter and Sort Section */}
-      <section className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4  p-4 rounded-lg shadow-md">
+      <section className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 p-4 rounded-lg shadow-md">
         <select
           value={selectedCategory}
           onChange={handleCategoryChange}
@@ -47,23 +115,24 @@ export default function ShopPage() {
         </select>
       </section>
 
-
       {/* Products Section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
-        {/* Product Cards */}
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
-            key={product.id}
+            key={product._id}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transform transition-all duration-300"
           >
             <div className="relative h-48">
-              <Image
-                src={product.image}
-                alt={product.title}
-                layout="fill"
-                objectFit="top"
-              />
+              <Link href={`../productDectription/${product._id}`}>
+                <Image
+                  src={product.image.asset.url}
+                  alt={product.title}
+                  layout="fill"
+                  objectFit="top"
+                />
+              </Link>
             </div>
+
             <div className="p-4 text-center">
               <h2 className="text-lg font-medium text-gray-700">{product.title}</h2>
               <p className="text-teal-600 font-semibold">${product.price.toFixed(2)}</p>
@@ -75,7 +144,9 @@ export default function ShopPage() {
       {/* Newsletter Section */}
       <section className="bg-white mt-12 p-8 text-center rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h2>
-        <p className="text-gray-600 mb-6">Get the latest updates on new arrivals and offers.</p>
+        <p className="text-gray-600 mb-6">
+          Get the latest updates on new arrivals and offers.
+        </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <input
             type="email"
@@ -90,54 +161,3 @@ export default function ShopPage() {
     </div>
   );
 }
-
-const products = [
-  {
-    id: 1,
-    title: 'Elegant Chair',
-    price: 120,
-    image: '/category/Image (9).png',
-  },
-  {
-    id: 2,
-    title: 'Modern Sofa',
-    price: 240,
-    image: '/hot/card.png',
-  },
-  {
-    id: 3,
-    title: 'Wooden Chair',
-    price: 180,
-    image: '/product/Image (12).png',
-  },
-  {
-    id: 4,
-    title: 'Cozy Armchair',
-    price: 99,
-    image: '/category/Image (10).png',
-  },
-  {
-    id: 5,
-    title: 'Stylish Sofa',
-    price: 75,
-    image: '/product/nathan-fertig-FBXuXp57eM0-unsplash.jpg',
-  },
-  {
-    id: 6,
-    title: 'Office Desk',
-    price: 200,
-    image: '/category/Image (11).png',
-  },
-  {
-    id: 7,
-    title: 'stylish orangey',
-    price: 50,
-    image: '/hot/item-category 1.png',
-  },
-  {
-    id: 8,
-    title: 'Comfy Beanbag',
-    price: 85,
-    image: '/product/Image (9).png',
-  },
-];
