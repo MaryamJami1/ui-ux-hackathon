@@ -65,8 +65,6 @@ export default function ShopPage() {
     // Filter by category
     if (category !== "All") {
       filtered = filtered.filter(product => product.category.title === category);
-      ;
-      
     }
 
     console.log("After category filter:", filtered); // Log products after filtering

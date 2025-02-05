@@ -9,6 +9,7 @@ import { useCart } from "@/app/context/CartContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchFeaturedProducts } from "@/sanity/lib/feature";
+import Link from "next/link";
 
 interface Product {
   _id: string;
@@ -68,13 +69,15 @@ export default function FeaturedProducts() {
                       </Badge>
                     )}
                     <div className="aspect-square overflow-hidden">
-                      <Image
-                        src={product.image.asset.url}
-                        alt={product.title}
-                        width={400}
-                        height={400}
-                        className="object-cover transition-transform group-hover:scale-105"
-                      />
+                      <Link href={`components/productDectription/${product._id}`}>
+                        <Image
+                          src={product.image.asset.url}
+                          alt={product.title}
+                          height={400}
+                          width={400}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="p-4">
